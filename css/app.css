@@ -94,7 +94,7 @@ a, .linklike {
 }
 
 .container {
-  max-width: 40em;
+  max-width: 640px;
   width: 100%;
   margin: 1em auto;
   position: relative;
