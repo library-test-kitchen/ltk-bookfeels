@@ -10,7 +10,7 @@ $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
 $this->mailer = Swift_Mailer::newInstance($transporter);
 
 // assign variables post data and header info
-$EmailFrom = "contact_form@yourdomain.com";
+$EmailFrom = "phaduong@me.com";
 $EmailTo = "paulina.haduong@gmail.com";
 $Subject = "Message from YourDomain.com visitor";
 $Book = $_POST["txt_bookName"];
@@ -22,19 +22,19 @@ $Body = $Book + "-" + $Author;
 $mailer = Swift_Mailer::newInstance($transporter);
 $message=Swift_Message::newInstance();
 $message->setSubject($Subject);
-$message->setFrom(array($EmailFrom =>'YourDomain site visitor'));
+$message->setFrom(array($EmailFrom =>'Yourself'));
 $headers = $message->getHeaders();
 $message->setTo(array($EmailTo =>'Comments'));
 $message->setBody($Body);
 $success=$mailer->send($message);
 
 // redirect to success page, this is where the URL key "mode" comes in
-if ($success){
-  print "Success!";
-}
-else{
-  print "Fail!>";
-}
+// if ($success){
+//   print "Success!";
+// }
+// else{
+//   print "Fail!>";
+// }
  
 // Create the message
 // $message = Swift_Message::newInstance();
