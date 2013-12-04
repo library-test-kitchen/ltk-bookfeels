@@ -22,3 +22,5 @@ $mailer->send($message, $failedRecipients);
  
 // Show failed recipients
 print_r($failedRecipients);
+
+?>
