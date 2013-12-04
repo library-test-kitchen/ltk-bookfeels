@@ -9,8 +9,7 @@ $transport->setPassword("Password");
 // Create the message
 $message = Swift_Message::newInstance();
 $message->setTo(array(
-   "aurelioderosa@gmail.com" => "Aurelio De Rosa",
-   "info@audero.it" => "Audero"
+   "paulina.haduong@gmail.com" => "Paulina"
 ));
 $message->setCc(array("a.derosa@audero.it" => "Aurelio De Rosa"));
 $message->setBcc(array("boss@bank.com" => "Bank Boss"));
