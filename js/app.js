@@ -1,9 +1,6 @@
 var iterations = 0;
 var tag = "bookfeels";
 
-function sendstuff() {
-	$.post("tumblr.php", {author: "jess", title: " the mess"});
-}
 
 (function () {
   "use strict";
