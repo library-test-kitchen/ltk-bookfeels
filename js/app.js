@@ -131,7 +131,7 @@ function sendstuff() {
       fd.append('title', $("#bookName").val());
       fd.append('author', $("#bookAuthor").val());
 
-    	$.ajax({type: "POST", url:"sendit.php", data:fd, contentType: false, processData: false}).done(function(data) {
+    	$.ajax({type: "POST", url:"http://www.jessyurko.com/bookfeels/sendit.php", data:fd, contentType: false, processData: false}).done(function(data) {
     		$("#upload").html("uploaded!");
     		$("#upload").removeClass("processing");
     		$("#upload").addClass("finished");
