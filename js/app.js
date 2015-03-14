@@ -125,14 +125,13 @@ function sendstuff() {
     frames: [],
 
     //IMGUR API CALL
-    imgur_client_id: '886730f5763b437',
     do_up: function (blob, callback) {
       var fd = new FormData();
       fd.append('image', blob);
       fd.append('title', $("#bookName").val());
       fd.append('author', $("#bookAuthor").val());
 
-    	$.ajax({type: "POST", url:"mailit.php", data:fd, contentType: false, processData: false}).done(function(data) {
+    	$.ajax({type: "POST", url:"sendit.php", data:fd, contentType: false, processData: false}).done(function(data) {
     		$("#upload").html("uploaded!");
     		$("#upload").removeClass("processing");
     		$("#upload").addClass("finished");
