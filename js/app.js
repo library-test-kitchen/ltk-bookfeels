@@ -1,6 +1,9 @@
 var iterations = 0;
 var tag = "bookfeels";
 
+function sendstuff() {
+	$.post("tumblr.php", {author: "jess", title: " the mess"});
+}
 
 (function () {
   "use strict";
@@ -124,20 +127,20 @@ var tag = "bookfeels";
     //IMGUR API CALL
     imgur_client_id: '886730f5763b437',
     do_up: function (blob, callback) {
-    	console.log(blob);
-      var fd = new FormData(),
-        xhr = new XMLHttpRequest();
+      var fd = new FormData();
       fd.append('image', blob);
-     xhr.open("POST", "https://api.imgur.com/3/image.json");
-      xhr.onload = function () {
-        callback && callback(JSON.parse(xhr.response));
-        var data = JSON.parse(xhr.response);
-        var link = data.data.link;
-        console.log(link);
-      }
-      xhr.setRequestHeader('Authorization', 'Client-ID ' + facetogif.imgur_client_id);
-      xhr.send(fd); 
-      console.log(xhr);
+      fd.append('title', $("#bookName").val());
+      fd.append('author', $("#bookAuthor").val());
+
+    	$.ajax({type: "POST", url:"mailit.php", data:fd, contentType: false, processData: false}).done(function(data) {
+    		$("#upload").html("uploaded!");
+    		$("#upload").removeClass("processing");
+    		$("#upload").addClass("finished");
+    		$("#gifs-go-here").append("<span class='sub'>check out your gif at <a href='http://ltk-bookfeels.tumblr.com' target='_blank'>ltk-bookfeels.tumblr.com</a>!</span>");
+    		
+    		
+    	});
+
      
     },
     upload: function (opts) {
@@ -300,6 +303,7 @@ var tag = "bookfeels";
         facetogif.upload({
           img: container.querySelector('.generated-img'),
           onuploaded: function (json) {
+          	console.log("!");
             e.target.innerHTML = facetogif.str.UPLOADED;
             e.target.href = 'http://imgur.com/' + json.data.id;
             e.target.classList.remove('processing');
@@ -327,7 +331,7 @@ var tag = "bookfeels";
 
     document.getElementById('put-your-face-here').addEventListener('click', function (e) {
       var button = e.target;
-      if (button.classList.contains('clicked') && facetogif.stream) {
+      if (button.classList.contains('clicked') && facetogif.stream) {      
         track('streaming', 'stop');
         facetogif.stream.stop();
         facetogif.stream = null;
@@ -335,6 +339,8 @@ var tag = "bookfeels";
         button.innerHTML = facetogif.str.ASK_FOR_PERMISSION;
         button.classList.remove('streaming');
       } else {
+      	$("video").show();
+
         track('streaming', 'request');
         getStream(function (stream) {
           track('streaming', 'start');
@@ -425,14 +431,9 @@ var tag = "bookfeels";
 } ());
 
 function processBook(){
-var bookName;
-var bookAuthor;
+	var bookName = document.getElementById('bookName').value;
+	var bookAuthor = document.getElementById('bookAuthor').value;
 
-
-var bookName = document.getElementById('bookName').value;
-var bookAuthor = document.getElementById('bookAuthor').value;
-console.log(bookName);
-console.log(bookAuthor);
 }
 
 $(document).ready(function(){
@@ -440,7 +441,6 @@ $(document).ready(function(){
     $(this).addClass('input-prompt-' + i);
     var promptSpan = $('<span class="input-prompt"/>');
     $(promptSpan).attr('id', 'input-prompt-' + i);
-    $(promptSpan).append($(this).attr('title'));
     $(promptSpan).click(function(){
       $(this).hide();
       $('.' + $(this).attr('id')).focus();

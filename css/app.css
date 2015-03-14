@@ -1,3 +1,16 @@
+form#bookdata_form {
+  padding-bottom: 35px;
+}
+
+#bookdata_form input {
+	margin: 6px 0 3px 0;
+	font-family: "Oswald", sans-serif;
+	font-style: italic;
+}
+
+
+
+
 /* Header columns */
 .headleft{
 	float: left;
@@ -68,6 +81,11 @@ body, .ui-button, .ui-text {
 	font-size: 28px;
 	}
 	
+.sub {
+  font-family: "Oswald", sans-serif;
+  font-size: 14px;
+}
+	
 .paragraph2{
 	font-family: "Oswald";
 	font-size: 18px;
@@ -94,8 +112,7 @@ a, .linklike {
 }
 
 .container {
-  max-width: 640px;
-  width: 100%;
+
   margin: 1em auto;
   position: relative;
 }
@@ -103,6 +120,7 @@ a, .linklike {
 video {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  width: 100%;
 }
 
 video ~ .gif-maker-controls {
@@ -268,6 +286,11 @@ canvas {
   transition: opacity 0.2s;
 }
 
+#upload.finished {
+	color:hsla(0,0%, 50%, 1);
+	background-color: white;
+}
+
 .ui-button.control {
   padding: 0 0.7em;
   display: inline-block;
@@ -302,8 +325,7 @@ canvas {
 }
 
 .generated-img {
-  width: 640px;
-  height: 480px;
+  width: 100%;
 }
 
 .square .generated-img {
