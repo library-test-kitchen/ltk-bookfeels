@@ -1,5 +1,6 @@
 var iterations = 0;
 var tag = "bookfeels";
+var tumblrURL = 'http://ltk-bookfeels.tumblr.com';
 
 
 (function () {
@@ -132,7 +133,7 @@ var tag = "bookfeels";
     		$("#upload").html("uploaded!");
     		$("#upload").removeClass("processing");
     		$("#upload").addClass("finished");
-    		$("#gifs-go-here").append("<span class='sub'>check out your gif at <a href='http://ltk-bookfeels.tumblr.com' target='_blank'>ltk-bookfeels.tumblr.com</a>!</span>");
+    		$("#gifs-go-here").append("<span class='sub'>check out your gif at <a href='"+tumblrURL+"' target='_blank'>ltk-bookfeels.tumblr.com</a>!</span>");
     		
     		
     	});
